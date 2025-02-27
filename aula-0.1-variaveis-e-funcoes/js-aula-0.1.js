@@ -112,4 +112,5 @@ const start = (function (app) {
 })("whatsapp");
 
 // git add . 
-// git commit -m "Marcelo-18a
+// git commit -m "Marcelo-18a"
+// git push
