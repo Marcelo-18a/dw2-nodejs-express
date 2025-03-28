@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css" type="css/text">
     <title>Perfil</title>
 </head>
 <body>
@@ -11,7 +12,8 @@
 
         <h1>Seja bem vindo <%=perfil%></h1>
         <hr>
-        <h2><li><%=perfil%></li></h2>
+        <h2>Você deseja voltar?</h2>
+        <button onclick="window.location.href='/perfil'">SIM</button>
       
 
         <%}
@@ -21,6 +23,9 @@
 
             <H1>Crie sua conta agora</H1>
             
+            <button onclick="window.location.href='/perfil/Marcelo'">Clique aqui</button>
+
+
         <%} %>
         
 </body>
