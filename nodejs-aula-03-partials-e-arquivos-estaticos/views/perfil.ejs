@@ -1,0 +1,23 @@
+<%- include ('partials/navbar.ejs')%>
+<%- include ('partials/header.ejs')%>
+    <% if (perfil) { %>
+
+        <h1>Seja bem vindo <%=perfil%></h1>
+        <hr>
+        <h2>Você deseja voltar?</h2>
+        <button onclick="window.location.href='/perfil'">SIM</button>
+      
+
+        <%}
+        
+        
+        else { %>
+
+            <H1>Crie sua conta agora</H1>
+            
+            <button onclick="window.location.href='/perfil/Marcelo'">Clique aqui</button>
+
+
+        <%} %>
+        
+        <%- include ('partials/footer.ejs')%>

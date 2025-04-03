@@ -9,9 +9,19 @@
     <h1>Confira esse produtos</h1>
     <ul>
         <!--Chamado variavel com tags do ejs-->
-        <li><%=produto%></li>
 
     </ul>
+    
+    <% if(!produto){ %>
+        <% produtos.forEach(produto => { %>
+            <p><a href="/produtos/<%= produto %>"><%= produto%></a></p>
+<% }) %>
+    <%}else {%> 
+        <p><%= produto %></p>
+        
+ <%} %>
+ 
+
     <hr>
     <p>Faça seu pedido agora!</p>
     
