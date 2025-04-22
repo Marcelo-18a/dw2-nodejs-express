@@ -12,17 +12,17 @@
                         <tr>
                             <th></th>
                             <th>Nome:</th>
-                            <th>Preço:</th>
+                            <th>Preco:</th>
                             <th>Categoria:</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <% produtos.forEach(produto => { %>
+                        <% produtos.forEach(produtos => { %>
                         <tr>
-                            <td><img src="imgs/product.png" width="30px"></td>
-                            <td><%= produto.nome %></td>
-                            <td><%= produto.preco.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}) %></td>
-                            <td><%= produto.categoria %></td>
+                            <td><img src="/imgs/product.png" width="30px"></td>
+                            <td><%= produtos.Nome %></td>
+                            <td><%= produtos.Preço.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}) %></td>
+                            <td><%= produtos.Categoria %></td>
                         </tr>
                         <% }) %>
                     </tbody>

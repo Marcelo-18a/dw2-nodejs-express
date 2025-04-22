@@ -4,15 +4,13 @@ import Pedidos from "../models/Pedido.js";
 
 // ROTA PEDIDOS
 router.get("/pedidos", function (req, res) {
+ 
   Pedidos.findAll()
     .then((pedido) => {
       res.render("pedidos", {
         pedido: pedido,
       });
     })
-    .catch((error) => {
-      console.log(error);
-    });
 });
 
 export default router;

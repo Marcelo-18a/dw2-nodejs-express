@@ -1,59 +1,55 @@
-// Importando o Express com ES6 Modules
+// Importando dependências
 import express from "express";
-// Iniciando o Express na variável app
-const app = express();
-// Importando os Controllers (onde estão as rotas)
 import ClientesController from "./controllers/ClientesController.js";
 import ProdutosController from "./controllers/ProdutosController.js";
 import PedidosController from "./controllers/PedidosController.js";
 import connection from "./config/sequelize-config.js";
 
-// realizando a conexao com o banco de dados
-// then = sucesso
-//catch = falha
+// Inicializando o app Express
+const app = express();
+
+// Tentativa de autenticação com o banco de dados
 connection
   .authenticate()
   .then(() => {
-    console.log("conexao com banco realizada com sucesso!");
+    console.log("✅ Conexão com o banco realizada com sucesso!");
   })
   .catch((error) => {
-    console.log(error);
+    console.error("❌ Erro ao conectar com o banco:", error);
   });
 
-//criar o banco de dados do projeto (se ele n existir)
-
+// Criando o banco de dados (caso não exista)
 connection
-  .query(`create database if not exists sistemaLoja`)
+  .query(`CREATE DATABASE IF NOT EXISTS sistemaLoja`)
   .then(() => {
-    console.log("o banco de dados foi criado!");
+    console.log("✅ Banco de dados verificado/criado com sucesso.");
   })
-  .catch(() => {
-    console.log(error);
+  .catch((error) => {
+    console.error("❌ Erro ao criar o banco de dados:", error);
   });
-  
 
-// Define o EJS como Renderizador de páginas
+// Configurando o template engine
 app.set("view engine", "ejs");
 
-// Define o uso da pasta "public" para uso de arquivos estáticos
+// Permitindo uso da pasta 'public' para arquivos estáticos (CSS, imagens, JS)
 app.use(express.static("public"));
 
-// Definindo o uso das rotas dos Controllers
+// Importando e utilizando os controllers (rotas)
 app.use("/", ClientesController);
 app.use("/", ProdutosController);
 app.use("/", PedidosController);
 
-// ROTA PRINCIPAL
-app.get("/", function (req, res) {
+// Rota principal
+app.get("/", (req, res) => {
   res.render("index");
 });
 
-// INICIA O SERVIDOR NA PORTA 8080
+// Iniciando o servidor
 const port = 8080;
-app.listen(port, function (erro) {
-  if (erro) {
-    console.log("Ocorreu um erro!");
+app.listen(port, (err) => {
+  if (err) {
+    console.error("❌ Ocorreu um erro ao iniciar o servidor:", err);
   } else {
-    console.log(`Servidor iniciado com sucesso em: http://localhost:${port}`);
+    console.log(`🚀 Servidor rodando em: http://localhost:${port}`);
   }
 });
