@@ -1,0 +1,50 @@
+<%- include ('partials/header.ejs') %>
+<%- include ('partials/navbar.ejs') %>
+
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h1>Cadastrar Pedidos</h1>
+        </div>
+        <div class="card-body">
+            <form action="/pedidos/new" method="POST">
+                <label >Pedidos do usuario</label>
+                
+
+
+                
+            </form>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h1>Pedidos</h1>
+            </div>
+            <div class="card-body">
+                <table>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Número:</th>
+                            <th>Valor:</th>
+                            <th>ações:</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% pedido.forEach(pedido => { %>
+                        <tr>
+                            <td><img src="imgs/order.png" width="30px"></td>
+                            <td><%= pedido.numero %></td>
+                            <td><%= pedido.valor.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}) %></td>
+                        </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+<%- include ('partials/footer.ejs') %>
